@@ -1,0 +1,53 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% if error %}
+{{ error }}
+
+<br/>
+<br/>
+{% endif %}
+<h1>Signup!</h1>
+
+<form method = "POST" action="{% url 'signup' %}" enctype="multipart/form-data" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    username:
+    <br/>
+    <input type="text" name="username" />
+    <br/>
+    Password:
+    <br/>
+    <input type="password" name="password1" />
+    <br/>
+    confirm Password:
+    <br/>
+    <input type="password" name="password2" />
+    <br/>
+    <h1>File Upload</h1>
+    <p><input  type="file" name="img"></p>
+    
+    <input class ="btn btn-primary" type="submit" value= "signup" />
+    <br/>
+    <hr>
+    
+</form>
+{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel_image</title>
+</head>
+<body>
+    <form method = "post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>
